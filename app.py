@@ -14,10 +14,6 @@ app.secret_key = 'silvio'
 app.config['JWT_AUTH_URL_RULE'] = '/login'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-  db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth
 
 api.add_resource(Item, '/item/<string:name>')
